@@ -5,9 +5,9 @@ export const Container = styled.View`
 	flex: 1;
 	justify-content: center;
 	align-items: center;
-	background-color: ${({theme}) => theme.COLORS.BACKGROUND_LIGHT};
+	background-color: ${({theme}) => theme.colors.light.background};
 `
 export const LoadingIndictor = styled.ActivityIndicator.attrs(({}) => ({
-	color: theme.COLORS.PRIMARY,
+	color: theme.colors.light.background,
 	size: 'large'
 }))``;

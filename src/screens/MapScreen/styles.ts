@@ -11,7 +11,7 @@ type Props = {
 
 export const Container = styled(SafeAreaView)`
 	flex: 1;
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_LIGHT};
+    background-color: ${({theme}) => theme.colors.light.background};
 `;
 
 export const Map = styled(MapView)`
@@ -25,7 +25,7 @@ export const ContainerCategory = styled.View`
     right: 10px;
     flex-direction: row;
     padding: 10px;
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_LIGHT};
+    background-color: ${({theme}) => theme.colors.light.background};
     border-radius: 10px;
     height: 70px;
 `;
@@ -33,15 +33,15 @@ export const ContainerCategory = styled.View`
 export const CategoryItem = styled(TouchableOpacity)<Props>`
     padding: 10px;
     background-color: ${({ theme, type}) => (
-		type === "SELECTED" ? theme.COLORS.GREEN : theme.COLORS.BACKGROUND_LIGHT
+		type === "SELECTED" ? theme.colors.light.primary : theme.colors.light.background
 	)};
     border-radius: 5px;
 `;
 
 export const CategoryText = styled.Text`
     ${({theme}) => css`
-        font-size: ${theme.FONT_SIZE.LG}px;
-        color: ${theme.COLORS.TEXT_PRIMARY};
-        font-family: ${theme.FONT_FAMILY.BOLD};
+        font-size: ${theme.font_size.lg}px;
+        color: ${theme.colors.light.text_primary};
+        font-family: ${theme.font_family.bold};
     `};
 `;

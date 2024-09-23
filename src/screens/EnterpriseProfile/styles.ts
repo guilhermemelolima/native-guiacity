@@ -6,7 +6,7 @@ import { Image } from "react-native";
 export const Container = styled(SafeAreaView)`
 	flex: 1;
 	padding: 20px; 
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_LIGHT};
+    background-color: ${({theme}) => theme.COLORS.LIGHT.BACKGROUND};
 `;
 
 export const ImageProfile = styled(Image)`
@@ -16,18 +16,18 @@ export const ImageProfile = styled(Image)`
 	height: 200px;
 	border-radius: 65px; 
 	align-self: center; 
-	background-color: ${({ theme }) => theme.COLORS.BACKGROUND_LIGHT};
+	background-color: ${({ theme }) => theme.colors.light.background};
 `;
 
 export const Nome = styled.Text`
 	text-align: center;
 	margin-bottom: 20px;
-	font-size: ${({theme}) => theme.FONT_SIZE.XL}px;
-	font-family: ${({theme}) => theme.FONT_FAMILY.BOLD};
+	font-size: ${({theme}) => theme.font_size.xl}px;
+	font-family: ${({theme}) => theme.font_family.bold};
 `;
 
 export const Endereco = styled.Text`
-	font-size: ${({theme}) => theme.FONT_SIZE.MD}px;
-	font-family: ${({theme}) => theme.FONT_FAMILY.REGULAR};
+	font-size: ${({theme}) => theme.font_size.md}px;
+	font-family: ${({theme}) => theme.font_family.regular};
 `;
 

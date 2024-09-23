@@ -27,6 +27,6 @@ export const Indicator = styled.View`
   height: 8px;
   width: 8px;    
   border-radius: 4px;
-  background-color: ${({theme}) => theme.COLORS.PRIMARY};  
+  background-color: ${({theme}) => theme.colors.light.primary};  
   margin-horizontal: 4px;
 `;
