@@ -1,0 +1,86 @@
+
+	import React, { useState } from 'react';
+	import { View, Text, StyleSheet } from 'react-native';
+	import MapView, { Marker, Region } from 'react-native-maps';
+	
+	export function EnterpriseProfile() {
+		const [zoomLevel, setZoomLevel] = useState(0);
+	
+		// Função para calcular o nível de zoom baseado no latitudeDelta
+		const calculateZoomLevel = (latitudeDelta: number) => {
+			const zoomLevel = Math.round(Math.log(360 / latitudeDelta) / Math.LN2);
+			return zoomLevel;
+		};
+	
+		// Captura o zoom quando o mapa é movido/ampliado
+		const handleRegionChangeComplete = (region: Region) => {
+			const zoom = calculateZoomLevel(region.latitudeDelta);
+			setZoomLevel(zoom);
+		};
+	
+		// Função para definir estilos condicionalmente com base no zoom
+		const getMarkerStyle = () => {
+			if (zoomLevel > 14) {
+				return styles.largeMarker;
+			} else if (zoomLevel > 10) {
+				return styles.mediumMarker;
+			} else {
+				return styles.smallMarker;
+			}
+		};
+	
+		return (
+			<View style={{ flex: 1 }}>
+				<MapView
+					style={{ flex: 1 }}
+					initialRegion={{
+						latitude: -23.5900,
+						longitude: -48.0400,
+						latitudeDelta: 0.06,
+						longitudeDelta: 0.06,
+					}}
+					onRegionChangeComplete={handleRegionChangeComplete}
+				>
+					{/* Exemplo de marcador com estilo baseado no zoom */}
+					<Marker
+						coordinate={{ latitude: -23.5900, longitude: -48.0400 }}
+						title="Local de Exemplo"
+						description="Descrição do local"
+					>
+						<View style={getMarkerStyle()}>
+							<Text>📍</Text>
+						</View>
+					</Marker>
+				</MapView>
+				<View style={styles.zoomInfo}>
+					<Text>Nível de Zoom: {zoomLevel}</Text>
+				</View>
+			</View>
+		);
+	}
+	
+	const styles = StyleSheet.create({
+		zoomInfo: {
+			position: 'absolute',
+			top: 50,
+			left: 20,
+			backgroundColor: 'rgba(255, 255, 255, 0.8)',
+			padding: 10,
+			borderRadius: 5,
+		},
+		largeMarker: {
+			backgroundColor: 'red',
+			padding: 15,
+			borderRadius: 50,
+		},
+		mediumMarker: {
+			backgroundColor: 'orange',
+			padding: 10,
+			borderRadius: 30,
+		},
+		smallMarker: {
+			backgroundColor: 'green',
+			padding: 5,
+			borderRadius: 20,
+		},
+	});
